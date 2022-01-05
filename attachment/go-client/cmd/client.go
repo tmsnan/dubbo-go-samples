@@ -56,7 +56,8 @@ func main() {
 
 	gxlog.CInfo("\n\n\nstart to test dubbo")
 	user := &pkg.User{}
-	ctx := context.WithValue(context.Background(), constant.AttachmentKey, map[string]interface{}{"timestamp": time.Now()})
+	//ctx := context.WithValue(context.Background(), constant.AttachmentKey, map[string]interface{}{"timestamp": time.Now()})
+	ctx := context.WithValue(context.Background(), constant.AttachmentKey, map[string]interface{}{"test-attachment-key": "some-msg","test-attachment-value": "hello-world","x-envoy-downstream-service-node" : "cluster","qz_color" : "dev-1.proje"})
 	err := userProvider.GetUser(ctx, []interface{}{"A001"}, user)
 	if err != nil {
 		gxlog.CError("error: %v\n", err)
